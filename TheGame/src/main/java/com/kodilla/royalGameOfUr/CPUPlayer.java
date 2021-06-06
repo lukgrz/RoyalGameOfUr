@@ -32,7 +32,7 @@ public class CPUPlayer {
             Image diceImage = player.getDiceList().get(n).getDiceImage();
             ImageView diceImageView = new ImageView(diceImage);
             diceImageView.setFitHeight(80);
-            diceImageView.setFitWidth(90);
+            diceImageView.setFitWidth(80);
             dices.getChildren().add(diceImageView);
         }
         return dices;

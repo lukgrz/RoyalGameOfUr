@@ -3,6 +3,7 @@ package com.kodilla.royalGameOfUr;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,16 +13,18 @@ public class Player {
     List<Dice> diceList = new ArrayList<>();
     private int move;
     boolean active;
+    Image chekerImage = new Image("file:src/main/resources/chekerBlue.png");
 
-
-    public List rollPlayerDices () {
+    public void rollPlayerDices () {
         for (int n = 0; n < 4; n++) {
             Dice dice = new Dice();
             diceList.add(dice.rollDice());
             move = dice.getPoints();
         }
-        System.out.println(move);
-        return diceList;
+    }
+
+    public void addCheker(Cheker cheker){
+        chekers.add(cheker);
     }
 
     public FlowPane playerDiceView () {
@@ -32,7 +35,7 @@ public class Player {
             Image diceImage = player.getDiceList().get(n).getDiceImage();
             ImageView diceImageView = new ImageView(diceImage);
             diceImageView.setFitHeight(80);
-            diceImageView.setFitWidth(90);
+            diceImageView.setFitWidth(80);
             dices.getChildren().add(diceImageView);
         }
         return dices;

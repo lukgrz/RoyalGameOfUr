@@ -11,7 +11,7 @@ public class Dice {
     List<Image> diceImages = new ArrayList<>();
     Image diceImage;
 
-    Image image1= new Image("file:src/main/resources/dice/01.png");
+    Image image1 = new Image("file:src/main/resources/dice/01.png");
     Image image2 = new Image("file:src/main/resources/dice/02.png");
     Image image3 = new Image("file:src/main/resources/dice/03.png");
     Image image4 = new Image("file:src/main/resources/dice/11.png");

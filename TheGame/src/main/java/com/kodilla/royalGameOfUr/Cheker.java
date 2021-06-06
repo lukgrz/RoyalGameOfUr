@@ -1,9 +1,40 @@
 package com.kodilla.royalGameOfUr;
 
-public class Cheker {
-    int position = 0;
+import javafx.scene.image.Image;
 
-    public int getPosition() {
-        return position;
+public class Cheker {
+    private Field field = null;
+    private int col;
+    private int row;
+    private int points;
+    Image image;
+
+
+    public void setField(Field field) {
+        this.field = field;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public Field getField() {
+        return field;
     }
 }
