@@ -13,6 +13,8 @@ public class TheGame extends Application {
         Player player = new Player();
         CPUPlayer cpu = new CPUPlayer();
 
-        board.createBoard(primaryStage, player, cpu);
+        board.createBoard(primaryStage);
+        board.createChekersCpu();
+        board.createPlayerChekers();
     }
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Dice {
-    int points;
+    private int points;
     List<Image> diceImages = new ArrayList<>();
     Image diceImage;
 
@@ -36,7 +36,7 @@ public class Dice {
         diceImages.add(image6);
 
         points = random.nextInt(2);
-        if (points == 1) {
+        if (points == 0) {
             diceImage = diceImages.get(random.nextInt(2));
         }else {
             diceImage = diceImages.get(3+ random.nextInt(2));

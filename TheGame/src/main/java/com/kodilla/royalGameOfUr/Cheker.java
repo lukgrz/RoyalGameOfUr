@@ -1,17 +1,23 @@
 package com.kodilla.royalGameOfUr;
 
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Cheker {
-    private Field field = null;
+public class Cheker extends ImageView {
+    private Field field;
+    private int fieldNumber;
     private int col;
     private int row;
-    private int points;
     Image image;
-
 
     public void setField(Field field) {
         this.field = field;
+    }
+
+    public void setFieldNumber(int fieldNumber) {
+        this.fieldNumber = fieldNumber;
     }
 
     public void setCol(int col) {
@@ -22,8 +28,12 @@ public class Cheker {
         this.row = row;
     }
 
-    public int getPoints() {
-        return points;
+    public Field getField() {
+        return field;
+    }
+
+    public int getFieldNumber() {
+        return fieldNumber;
     }
 
     public int getCol() {
@@ -32,9 +42,5 @@ public class Cheker {
 
     public int getRow() {
         return row;
-    }
-
-    public Field getField() {
-        return field;
     }
 }

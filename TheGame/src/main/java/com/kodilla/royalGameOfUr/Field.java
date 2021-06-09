@@ -1,35 +1,39 @@
 package com.kodilla.royalGameOfUr;
 
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class Field {
-    private Image image;
+public class Field extends Node {
+    private ImageView imageView;
     private int row;
     private int col;
-    private int fieldNumber;
     private int playerNumber;
     private int cpuNumber;
+    private boolean isAvalaible;
 
-    public Field(Image image,int fieldNumber, int col, int row) {
-        this.image = image;
-        this.fieldNumber = fieldNumber;
+    public Field(int row, int col) {
         this.row = row;
         this.col = col;
     }
 
-    public void addField(GridPane grid, Field field){
-        ImageView imageView = new ImageView(field.getImage());
-        grid.resize(80,80);
-        imageView.setFitWidth(80);
-        imageView.setFitHeight(80);
-        grid.add(imageView, field.getCol(), field.getRow());
+    public Field(ImageView imageView, int col, int row, int playerNumber, int cpuNumber, boolean isAvalaible) {
+        this.imageView = imageView;
+        this.row = row;
+        this.col = col;
+        this.playerNumber = playerNumber;
+        this.cpuNumber = cpuNumber;
+        this.isAvalaible = isAvalaible;
     }
 
-    public Image getImage() {
-        return image;
+    public boolean isAvalaible() {
+        return isAvalaible;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
     }
 
     public int getRow() {
@@ -40,10 +44,6 @@ public class Field {
         return col;
     }
 
-    public int getFieldNumber() {
-        return fieldNumber;
-    }
-
     public int getPlayerNumber() {
         return playerNumber;
     }
@@ -52,11 +52,7 @@ public class Field {
         return cpuNumber;
     }
 
-    public void setPlayerNumber(int playerNumber) {
-        this.playerNumber = playerNumber;
-    }
-
-    public void setCpuNumber(int cpuNumber) {
-        this.cpuNumber = cpuNumber;
+    public void setAvalaible(boolean avalaible) {
+        isAvalaible = avalaible;
     }
 }
