@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
 public class Field extends Node {
-    private ImageView imageView;
     private int row;
     private int col;
     private int playerNumber;
@@ -19,8 +18,7 @@ public class Field extends Node {
         this.col = col;
     }
 
-    public Field(ImageView imageView, int col, int row, int playerNumber, int cpuNumber, boolean isAvalaible) {
-        this.imageView = imageView;
+    public Field(int col, int row, int playerNumber, int cpuNumber, boolean isAvalaible) {
         this.row = row;
         this.col = col;
         this.playerNumber = playerNumber;
@@ -30,10 +28,6 @@ public class Field extends Node {
 
     public boolean isAvalaible() {
         return isAvalaible;
-    }
-
-    public ImageView getImageView() {
-        return imageView;
     }
 
     public int getRow() {

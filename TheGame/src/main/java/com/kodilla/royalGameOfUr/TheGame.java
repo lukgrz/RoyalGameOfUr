@@ -16,5 +16,7 @@ public class TheGame extends Application {
         board.createBoard(primaryStage);
         board.createChekersCpu();
         board.createPlayerChekers();
+
+
     }
 }

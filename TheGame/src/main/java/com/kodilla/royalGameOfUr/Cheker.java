@@ -1,7 +1,5 @@
 package com.kodilla.royalGameOfUr;
 
-import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -11,6 +9,7 @@ public class Cheker extends ImageView {
     private int col;
     private int row;
     Image image;
+    boolean ableToMove = true;
 
     public void setField(Field field) {
         this.field = field;
