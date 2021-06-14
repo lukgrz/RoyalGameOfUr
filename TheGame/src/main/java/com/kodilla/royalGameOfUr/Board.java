@@ -258,7 +258,7 @@ public class Board {
     }
 
     public void cpuMove(Cheker cheker) {
-        if (checkFiledAvaliableCpu(cheker)) {
+        if (checkFieldAvaliableCpu(cheker)) {
             cheker.getField().setAvaliableForCpu(true);
             cheker.setFieldNumber(cheker.getFieldNumber() + moveCpu);
             cheker.setField(getByCpuNumber(cheker.getFieldNumber()));
@@ -332,8 +332,11 @@ public class Board {
             return false;
     }
 
-    public boolean checkFiledAvaliableCpu(Cheker cheker){
-        return getByCpuNumber(cheker.getFieldNumber()+moveCpu).isAvaliableForCpu();
+    public boolean checkFieldAvaliableCpu(Cheker cheker){
+        if (cheker.getFieldNumber() + move<=16) {
+            return getByCpuNumber(cheker.getFieldNumber() + moveCpu).isAvaliableForCpu();
+        }else
+            return false;
     }
 
     public void beatChekerByPlayer (Cheker playerCheker){
