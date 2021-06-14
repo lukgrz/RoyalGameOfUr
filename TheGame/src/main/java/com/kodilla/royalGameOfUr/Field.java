@@ -1,33 +1,31 @@
 package com.kodilla.royalGameOfUr;
 
-import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 
 public class Field extends Node {
     private int row;
     private int col;
     private int playerNumber;
     private int cpuNumber;
-    private boolean isAvalaible;
+    private boolean isAvaliableForPlayer;
+    private boolean isAvaliableForCpu;
 
-    public Field(int row, int col) {
-        this.row = row;
-        this.col = col;
-    }
-
-    public Field(int col, int row, int playerNumber, int cpuNumber, boolean isAvalaible) {
+    public Field(int col, int row, int playerNumber, int cpuNumber, boolean isAvalaibleForPlayer,
+                 boolean isAvaliableForCpu) {
         this.row = row;
         this.col = col;
         this.playerNumber = playerNumber;
         this.cpuNumber = cpuNumber;
-        this.isAvalaible = isAvalaible;
+        this.isAvaliableForPlayer = isAvalaibleForPlayer;
+        this.isAvaliableForCpu = isAvaliableForCpu;
     }
 
-    public boolean isAvalaible() {
-        return isAvalaible;
+    public boolean isAvaliableForPlayer() {
+        return isAvaliableForPlayer;
+    }
+
+    public boolean isAvaliableForCpu() {
+        return isAvaliableForCpu;
     }
 
     public int getRow() {
@@ -46,7 +44,12 @@ public class Field extends Node {
         return cpuNumber;
     }
 
-    public void setAvalaible(boolean avalaible) {
-        isAvalaible = avalaible;
+    public void setAvaliableForPlayer(boolean avaliableForPlayer) {
+        isAvaliableForPlayer = avaliableForPlayer;
     }
+
+    public void setAvaliableForCpu(boolean avaliableForCpu) {
+        isAvaliableForCpu = avaliableForCpu;
+    }
+
 }

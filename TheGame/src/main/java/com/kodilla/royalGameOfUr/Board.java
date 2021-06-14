@@ -1,5 +1,4 @@
 package com.kodilla.royalGameOfUr;
-
 import javafx.geometry.HPos;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
@@ -10,10 +9,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 
 public class Board {
     GridPane grid = new GridPane();
@@ -21,14 +20,17 @@ public class Board {
     List<Field> fieldsList = new ArrayList<>();
     FlowPane dices = new FlowPane(Orientation.HORIZONTAL);
     FlowPane dicesCpu = new FlowPane(Orientation.HORIZONTAL);
+
     Label moveInfo = new Label("");
     Label chekersInHomePlayer = new Label("");
     Label chekersFinishPlayer = new Label("");
     Label moveInfoCpu = new Label("");
     Label chekersInHomeCpu = new Label("");
-    Label getChekersFinishCpu = new Label("");
+    Label chekersFinishCpu = new Label("");
+
     List<Cheker> chekersPlayer = new ArrayList<>();
     List<Cheker> chekersCpu = new ArrayList<>();
+
     Button rollButton = new Button("ROLL DICES");
     int move;
     int moveCpu;
@@ -61,30 +63,30 @@ public class Board {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        fieldsList.add(new Field(1, 2, 5, 0, true));
-        fieldsList.add(new Field(2, 2, 4, 0, true));
-        fieldsList.add(new Field(3, 2, 3, 0, true));
-        fieldsList.add(new Field(4, 2, 2, 0, true));
-        fieldsList.add(new Field(5, 2, 1, 0, true));
-        fieldsList.add(new Field(6, 2, 16, 0, true));
-        fieldsList.add(new Field(7, 2, 15, 0, true));
-        fieldsList.add(new Field(8, 2, 14, 0, true));
-        fieldsList.add(new Field(1, 3, 6, 6, true));
-        fieldsList.add(new Field(2, 3, 7, 7, true));
-        fieldsList.add(new Field(3, 3, 8, 8, true));
-        fieldsList.add(new Field(4, 3, 9, 9, true));
-        fieldsList.add(new Field(5, 3, 10, 10, true));
-        fieldsList.add(new Field(6, 3, 11, 11, true));
-        fieldsList.add(new Field(7, 3, 12, 12, true));
-        fieldsList.add(new Field(8, 3, 13, 13, true));
-        fieldsList.add(new Field(1, 4, 0, 5, true));
-        fieldsList.add(new Field(2, 4, 0, 4, true));
-        fieldsList.add(new Field(3, 4, 0, 3, true));
-        fieldsList.add(new Field(4, 4, 0, 2, true));
-        fieldsList.add(new Field(5, 4, 0, 1, true));
-        fieldsList.add(new Field(6, 4, 0, 14, true));
-        fieldsList.add(new Field(7, 4, 0, 15, true));
-        fieldsList.add(new Field(8, 4, 0, 16, true));
+        fieldsList.add(new Field(1, 2, 5, 0, true, true));
+        fieldsList.add(new Field(2, 2, 4, 0, true, true));
+        fieldsList.add(new Field(3, 2, 3, 0, true, true));
+        fieldsList.add(new Field(4, 2, 2, 0, true, true));
+        fieldsList.add(new Field(5, 2, 1, 0, true, true));
+        fieldsList.add(new Field(6, 2, 16, 0, true, true));
+        fieldsList.add(new Field(7, 2, 15, 0, true, true));
+        fieldsList.add(new Field(8, 2, 14, 0, true, true));
+        fieldsList.add(new Field(1, 3, 6, 6, true, true));
+        fieldsList.add(new Field(2, 3, 7, 7, true, true));
+        fieldsList.add(new Field(3, 3, 8, 8, true, true));
+        fieldsList.add(new Field(4, 3, 9, 9, true, true));
+        fieldsList.add(new Field(5, 3, 10, 10, true, true));
+        fieldsList.add(new Field(6, 3, 11, 11, true, true));
+        fieldsList.add(new Field(7, 3, 12, 12, true, true));
+        fieldsList.add(new Field(8, 3, 13, 13, true, true));
+        fieldsList.add(new Field(1, 4, 0, 5, true, true));
+        fieldsList.add(new Field(2, 4, 0, 4, true, true));
+        fieldsList.add(new Field(3, 4, 0, 3, true, true));
+        fieldsList.add(new Field(4, 4, 0, 2, true, true));
+        fieldsList.add(new Field(5, 4, 0, 1, true, true));
+        fieldsList.add(new Field(6, 4, 0, 16, true, true));
+        fieldsList.add(new Field(7, 4, 0, 15, true, true));
+        fieldsList.add(new Field(8, 4, 0, 14, true, true));
 
         grid.add(moveInfo, 4, 0);
         moveInfo.setTextFill(Color.WHITE);
@@ -97,7 +99,15 @@ public class Board {
         chekersFinishPlayer.setStyle("-fx-border-color:red; -fx-background-color: brown;");
 
         grid.add(moveInfoCpu, 4, 6);
+        moveInfoCpu.setTextFill(Color.WHITE);
         moveInfoCpu.setStyle("-fx-border-color:red; -fx-background-color: brown;");
+        grid.add(chekersInHomeCpu,5,5);
+        chekersInHomeCpu.setTextFill(Color.WHITE);
+        chekersInHomeCpu.setStyle("-fx-border-color:red; -fx-background-color: brown;");
+        grid.add(chekersFinishCpu,6,5);
+        chekersFinishCpu.setTextFill(Color.WHITE);
+        chekersFinishCpu.setStyle("-fx-border-color:red; -fx-background-color: brown;");
+
         grid.add(rollButton, 5, 0);
         rollButton.setOnAction((e) -> rollPlayerDices());
     }
@@ -135,7 +145,7 @@ public class Board {
         }
         if (move == 0) {
             lostTurnPlayer();
-        } else if (isAnyMovePlayer() != true) {
+        } else if (!isAnyMovePlayer()) {
             lostTurnPlayer();
         } else {
             moveInfo.setText("You throw " + move);
@@ -165,21 +175,22 @@ public class Board {
     }
 
     public void playerMove(Cheker cheker) {
-        if (checkFieldAvaliablePlayer(cheker) == true) {
-            cheker.getField().setAvalaible(true);
+        if (checkFieldAvaliablePlayer(cheker)) {
+            cheker.getField().setAvaliableForPlayer(true);
             cheker.setFieldNumber(cheker.getFieldNumber() + move);
             cheker.setField(getByPlayerNumber(cheker.getFieldNumber()));
             grid.getChildren().remove(cheker);
             cheker.setCol(cheker.getField().getCol());
             cheker.setRow(cheker.getField().getRow());
-            cheker.getField().setAvalaible(false);
+            cheker.getField().setAvaliableForPlayer(false);
             grid.add(cheker, cheker.getCol(), cheker.getRow());
+            beatChekerByPlayer(cheker);
             move = 0;
             disableChkeres();
 
             if (cheker.getFieldNumber() == 16) {
                 cheker.setDisable(true);
-                cheker.getField().setAvalaible(true);
+                cheker.getField().setAvaliableForPlayer(true);
                 chekersPlayer.remove(cheker);
             }
             if (chekersPlayer.size()==0) {
@@ -219,6 +230,8 @@ public class Board {
             GridPane.setHalignment(cheker,HPos.CENTER);
             grid.add(cheker, cheker.getCol(), cheker.getRow());
         }
+        chekersInHomeCpu.setText("Chekers in home: \n" + numberOfChekersAtHome(1,chekersCpu));
+        chekersFinishCpu.setText("Chekers finished \n" + numberOfChekersFinished(chekersCpu));
     }
 
     public void rollCpuDices () {
@@ -245,18 +258,35 @@ public class Board {
     }
 
     public void cpuMove(Cheker cheker) {
-        ;
-        if (checkFiledAvaliableCpu(cheker) == true) {
-            cheker.getField().setAvalaible(true);
+        if (checkFiledAvaliableCpu(cheker)) {
+            cheker.getField().setAvaliableForCpu(true);
             cheker.setFieldNumber(cheker.getFieldNumber() + moveCpu);
             cheker.setField(getByCpuNumber(cheker.getFieldNumber()));
             grid.getChildren().remove(cheker);
             cheker.setCol(cheker.getField().getCol());
             cheker.setRow(cheker.getField().getRow());
-            cheker.getField().setAvalaible(false);
+            cheker.getField().setAvaliableForCpu(false);
             grid.add(cheker, cheker.getCol(), cheker.getRow());
+            beatChekerByCpu(cheker);
             moveCpu = 0;
+
+            if (cheker.getFieldNumber() == 16) {
+                cheker.setDisable(true);
+                cheker.getField().setAvaliableForCpu(true);
+                chekersCpu.remove(cheker);
+            }
+            if (chekersCpu.size()==0) {
+                moveInfo.setText("CPU WON THE GAME");
+                rollButton.setDisable(true);
+            }
+            if (cheker.getFieldNumber()==5||cheker.getFieldNumber()==9||cheker.getFieldNumber()==15) {
+                rollCpuDices();
+                chooseChekerCpu();
+            }
+
         } else chooseChekerCpu();
+        chekersInHomeCpu.setText("Cheker in home: \n" + numberOfChekersAtHome(1, chekersCpu));
+        chekersFinishCpu.setText("Chekers finished \n" + numberOfChekersFinished(chekersCpu));
     }
 
     public void enableChkeres(){
@@ -273,9 +303,9 @@ public class Board {
 
     public boolean isAnyMovePlayer() {
         int numberOfAvaliableMoves = 0;
-        boolean result = false;
+        boolean result;
         for (Cheker cheker:chekersPlayer) {
-            if (checkFieldAvaliablePlayer(cheker)==true) {
+            if (checkFieldAvaliablePlayer(cheker)) {
                 numberOfAvaliableMoves++;
             }
         }
@@ -297,13 +327,52 @@ public class Board {
 
     public boolean checkFieldAvaliablePlayer(Cheker cheker) {
         if (cheker.getFieldNumber() + move <= 16) {
-            return getByPlayerNumber(cheker.getFieldNumber() + move).isAvalaible();
+            return getByPlayerNumber(cheker.getFieldNumber() + move).isAvaliableForPlayer();
         } else
             return false;
     }
 
     public boolean checkFiledAvaliableCpu(Cheker cheker){
-        return getByCpuNumber(cheker.getFieldNumber()+moveCpu).isAvalaible();
+        return getByCpuNumber(cheker.getFieldNumber()+moveCpu).isAvaliableForCpu();
     }
+
+    public void beatChekerByPlayer (Cheker playerCheker){
+        if (playerCheker.getFieldNumber()>=6 && playerCheker.getFieldNumber()<=13){
+            if (!getByPlayerNumber(playerCheker.getFieldNumber()).isAvaliableForCpu()) {
+                Cheker cpuCheker = chekersCpu.stream()
+                        .filter(cheker -> cheker.getFieldNumber() == playerCheker.getFieldNumber())
+                        .findAny()
+                        .get();
+                cpuCheker.getField().setAvaliableForCpu(true);
+                cpuCheker.setFieldNumber(1);
+                cpuCheker.setField(getByCpuNumber(cpuCheker.getFieldNumber()));
+                grid.getChildren().remove(cpuCheker);
+                cpuCheker.setCol(cpuCheker.getField().getCol());
+                cpuCheker.setRow(cpuCheker.getField().getRow());
+                grid.add(cpuCheker, cpuCheker.getCol(), cpuCheker.getRow());
+            }
+        }
+    }
+
+    public void beatChekerByCpu (Cheker cpuCheker){
+        if (cpuCheker.getFieldNumber()>5&&cpuCheker.getFieldNumber()<14){
+            if (!getByCpuNumber(cpuCheker.getFieldNumber()).isAvaliableForPlayer()) {
+                Cheker playerCheker = chekersPlayer.stream()
+                        .filter(cheker -> cheker.getFieldNumber()== cpuCheker.getFieldNumber())
+                        .findAny()
+                        .get();
+                playerCheker.getField().setAvaliableForPlayer(true);
+                playerCheker.setFieldNumber(1);
+                playerCheker.setField(getByPlayerNumber(playerCheker.getFieldNumber()));
+                grid.getChildren().remove(playerCheker);
+                playerCheker.setCol(playerCheker.getField().getCol());
+                playerCheker.setRow(playerCheker.getField().getRow());
+                grid.add(playerCheker, playerCheker.getCol(), playerCheker.getRow());
+            }
+        }
+    }
+
+
+
 }
 

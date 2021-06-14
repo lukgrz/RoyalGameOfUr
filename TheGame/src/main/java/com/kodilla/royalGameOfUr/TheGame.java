@@ -10,8 +10,6 @@ public class TheGame extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Board board = new Board();
-        Player player = new Player();
-        CPUPlayer cpu = new CPUPlayer();
 
         board.createBoard(primaryStage);
         board.createChekersCpu();
