@@ -3,10 +3,10 @@ package com.kodilla.royalGameOfUr;
 import javafx.scene.Node;
 
 public class Field extends Node {
-    private int row;
-    private int col;
-    private int playerNumber;
-    private int cpuNumber;
+    private final int row;
+    private final int col;
+    private final int playerNumber;
+    private final int cpuNumber;
     private boolean isAvaliableForPlayer;
     private boolean isAvaliableForCpu;
 
